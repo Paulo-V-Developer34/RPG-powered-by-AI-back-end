@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "API para o meu primeiro projeto MERN",
   "dependencies": {
+    "@google/generative-ai": "^0.17.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.4"
