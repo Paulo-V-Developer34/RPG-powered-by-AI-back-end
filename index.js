@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors'); // Importe o middleware cors
 const app = express()
 
 const userRoute = require('./src/routes/user.route')
@@ -7,6 +8,9 @@ const userRoute = require('./src/routes/user.route')
 //const userRouter = require()
 
 const port = 3000
+
+// Use o middleware cors
+app.use(cors());
 
 //Isso é uma rota
     //utiliza o método http
