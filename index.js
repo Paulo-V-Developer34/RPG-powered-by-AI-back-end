@@ -1,5 +1,8 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
+
+const userRoute = require('src/routes/user.route.js')
 
 //const userRouter = require()
 
@@ -21,7 +24,20 @@ const port = 3000
   //  res.send('Bye World')
   //})
 
-app.use("/login", userRoute);
+// Middleware para parsear o corpo das requisições
+// app.use(bodyParser.urlencoded({ extended: true })); //esse aqui só serve se o formulário for mandado diretamente para cá (formato "application/x-www-form-urlencoded")
+app.use(bodyParser.json());
+
+// Rota para receber dados do formulário
+app.post('/submit-form', (req, res) => {    //esse código nunca vai ser executado pois seria necessário que o form chamasse ele
+    const formData = req.body;
+    console.log('Dados recebidos:', formData);
+
+    // Enviar uma resposta de volta para o front-end
+    res.json({ message: 'Dados recebidos com sucesso!', data: formData });
+});
+
+app.use("/ai-chat", userRoute); //o form chamou esse código
 
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}`))
 
