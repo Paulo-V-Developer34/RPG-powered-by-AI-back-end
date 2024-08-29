@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
-const { generateContent } = require('./src/services/user.service');
+const { generateContent } = require('../services/user.service');
 
 router.post('/ai-chat', async (req, res) => {
     console.log("deu certo 2");

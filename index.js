@@ -41,7 +41,18 @@ app.post('/submit-form', (req, res) => {    //esse código nunca vai ser executa
     res.json({ message: 'Dados recebidos com sucesso!', data: formData });
 });
 
-app.use("/ai-chat", userRoute); //o form chamou esse código
+// app.use("/ai-chat", userRoute); //o form chamou esse código
+//teste
+app.get('/ai-chat', (req, res) => {
+    res.send('Rota /ai-chat funcionando!');
+});
+
+
+app.get('/teste', (req, res) => {
+    res.send('Rota funcionando');
+});
+
+
 
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}`))
 
