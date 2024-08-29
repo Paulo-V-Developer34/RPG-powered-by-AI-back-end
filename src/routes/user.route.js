@@ -5,8 +5,9 @@ const { generateContent } = require('../services/user.service');
 
 router.post('/ai-chat', async (req, res) => {
     console.log("deu certo 2");
-
-    const { text } = req.body;
+    let msgFront = req.body
+    console.log(typeof(msgFront))
+    // const { texto } = req.body;
 
     try {
         const result = await generateContent(text);
