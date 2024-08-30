@@ -34,6 +34,24 @@ app.get('/teste', (req, res) => {
     res.send('Rota funcionando');
 });
 
+app.post('/teste2', (req, res) => {
+    console.log("deu certo o teste2")
+    let resposta = req.body
+    console.log(resposta)
+    res.json({ message: JSON.stringify(resposta) })
+});
+
+
+
+
+
+// // Importando as rotas
+const user2Routes = require('./src/routes/user2.route');
+// // Usando as rotas
+app.use('/user2', user2Routes);
+
+
+
 
 
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}`))
