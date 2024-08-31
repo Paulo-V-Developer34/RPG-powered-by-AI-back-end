@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
-const { generateContent } = require('../services/user.service');
+const { run } = require('../services/user.service');
 
 router.post('/teste2', async (req, res) => {
     console.log("deu certo o teste2");
@@ -12,7 +12,7 @@ router.post('/teste2', async (req, res) => {
     // res.json({ message: `${JSON.stringify(resposta)}` });
 
     try {
-        const result = await generateContent(resposta);
+        const result = await run(resposta);
         console.log("deu certo 3");
         console.log(result)
         console.log(typeof(result))
