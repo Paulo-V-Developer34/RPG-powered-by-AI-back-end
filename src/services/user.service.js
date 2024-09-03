@@ -14,6 +14,9 @@ const generationConfig = {
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
 });
+
+let start = false
+
   
   async function run(text) {
     const parts = [
@@ -27,16 +30,43 @@ const model = genAI.getGenerativeModel({
       {text: "input: "+text},
       {text: "output: "},
     ];
-  
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts }],
-      generationConfig,
-   // safetySettings: Adjust safety settings
-   // See https://ai.google.dev/gemini-api/docs/safety-settings
-    });
-    const response = result.response;
-    const iatext = response.text();
-    return iatext;
+
+    if (start == false) {
+      
+
+      const result = await model.generateContent({
+        contents: [{ role: "user", parts }],
+        generationConfig,
+      });
+
+      start = true
+      const response = result.response;
+      const iatext = response.text();
+      var firstiatext = iatext
+      return iatext
+    } else {
+      console.log("O Chat já foi iniciado :D")
+      const chat = model.startChat({
+        history: [
+          {
+            role: "user",
+            parts: [{ text: "Crie um RPG" }],
+          },
+          {
+            role: "model",
+            parts: [{ text: firstiatext }],
+          },
+        ],
+      });
+
+      // let partstext = {text: "input: "+text}
+
+      const result = await chat.sendMessage(text);
+      const response = result.response;
+      const iatext = response.text();
+      console.log(iatext)
+      return iatext;
+    }
   }
   
 module.exports = { run };
