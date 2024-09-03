@@ -14,44 +14,11 @@ app.use(cors());
 app.use('/api', userRoute);
 app.use(express.json());
 
-// Rota para receber dados do formulário    //veja se esse código pode te ajudar a resolver o problema da formulário
-app.post('/submit-form', (req, res) => {    //esse código nunca vai ser executado pois seria necessário que o form chamasse ele
-    const formData = req.body;
-    console.log('Dados recebidos:', formData);
-
-    // Enviar uma resposta de volta para o front-end
-    res.json({ message: 'Dados recebidos com sucesso!', data: formData });
-});
-
-// app.use("/ai-chat", userRoute); //o form chamou esse código
-//teste
-app.get('/ai-chat', (req, res) => {
-    res.send('Rota /ai-chat funcionando!');
-});
-
-
-app.get('/teste', (req, res) => {
-    res.send('Rota funcionando');
-});
-
-app.post('/teste2', (req, res) => {
-    console.log("deu certo o teste2")
-    let resposta = req.body
-    console.log(resposta)
-    res.json({ message: JSON.stringify(resposta) })
-});
-
-
-
-
 
 // // Importando as rotas
-const user2Routes = require('./src/routes/user2.route');
+const user2Routes = require('./src/routes/user.route');
 // // Usando as rotas
-app.use('/user2', user2Routes);
-
-
-
+app.use('/aiapi', user2Routes);
 
 
 app.listen(port, () => console.log(`O servidor está rodando na porta ${port}`))
