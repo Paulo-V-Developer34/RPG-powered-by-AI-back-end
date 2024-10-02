@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors'); // Importe o middleware cors
 const app = express()
 
-const userRoute = require('./src/routes/user.route')
+// const userRoute = require('./src/routes/user.route')
 
 //porta
 const port = 3000
@@ -11,7 +11,7 @@ const port = 3000
 //middlewares
 // Use o middleware cors
 app.use(cors());
-app.use('/api', userRoute);
+// app.use('/api', userRoute);
 app.use(express.json());
 
 

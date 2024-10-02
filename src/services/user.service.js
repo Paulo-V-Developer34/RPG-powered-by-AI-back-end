@@ -47,7 +47,7 @@ let start = false
     } else {
       console.log("O Chat já foi iniciado :D")
       const chat = model.startChat({
-        history: [
+        history: [ 
           {
             role: "user",
             parts: [{ text: "Crie um RPG" }],
